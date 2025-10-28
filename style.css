@@ -24,6 +24,10 @@ a:focus { outline: 2px solid; outline-offset: 2px; }
 }
 section {
   margin-top: 3rem;
+}
+
+/* add divider only when a section follows another section */
+section + section {
   padding-top: 2rem;
   border-top: 1px solid #eee;
 }
