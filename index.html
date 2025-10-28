@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Academic Homepage</title>
+  <meta name="description" content="Your Name — research, publications, teaching." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Your Name</h1>
+    <p>PhD Candidate, Department, University</p>
+    <nav aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/cv.pdf">CV</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2>About</h2>
+      <p>I am a <em>Role</em> at <em>Institution</em>. My research focuses on X, Y, Z.</p>
+    </section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <ul>
+        <li><strong>Paper Title</strong> (Year). <em>Venue</em>. [<a href="#">PDF</a>] [<a href="#">Code</a>]</li>
+        <li><strong>Another Paper</strong> (Year). <em>Journal</em>.</li>
+      </ul>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        <li>Course Name (Term, Year), Role.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>you@university.edu · <a href="https://scholar.google.com/">Google Scholar</a> · <a href="https://github.com/yourusername">GitHub</a> · <a href="https://twitter.com/yourhandle">X/Twitter</a></p>
+      <p><small>Department, University • City, Country</small></p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© <span id="year"></span> Your Name</p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
