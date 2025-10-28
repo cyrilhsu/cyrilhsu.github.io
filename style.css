@@ -16,7 +16,7 @@ a:focus { outline: 2px solid; outline-offset: 2px; }
   a { color:#a8c8ff; }
 }
 .profile-photo {
-  width: 120px;            /* smaller size */
+  width: 160px;            /* smaller size */
   height: auto;
   display: block;
   margin: 1rem 0;
