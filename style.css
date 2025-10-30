@@ -16,11 +16,10 @@ a:focus { outline: 2px solid; outline-offset: 2px; }
   a { color:#a8c8ff; }
 }
 .profile-photo {
-  width: 160px;            /* smaller size */
-  height: auto;
-  display: block;
-  margin: 1rem 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  float: right;
+  max-width: 1ˊ0px;
+  border-radius: 50%;
+  margin: 0 0 1em 1em;
 }
 section {
   margin-top: 3rem;
