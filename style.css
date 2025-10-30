@@ -32,3 +32,18 @@ section + section {
 @media (prefers-color-scheme: dark) {
   section { border-color: #333; }
 }
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #222;
+  line-height: 1.6;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 500;
+  color: #111;
+}
+nav, footer {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
