@@ -17,7 +17,7 @@ a:focus { outline: 2px solid; outline-offset: 2px; }
 }
 .profile-photo {
   float: right;
-  max-width: 1ˊ0px;
+  max-width: 160px;
   border-radius: 50%;
   margin: 0 0 1em 1em;
 }
