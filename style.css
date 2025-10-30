@@ -151,7 +151,12 @@ h3 {
   font-size: clamp(1.2rem, 2vw, 1.4rem);
 }
 
-p { margin: 0 0 1em; color: var(--fg); }
+p { 
+  margin: 0 0 1em; 
+  color: var(--fg);
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 ul { padding-left: 1.25rem; }
 
