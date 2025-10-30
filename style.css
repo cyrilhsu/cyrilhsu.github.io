@@ -33,6 +33,51 @@
 /* Let UA components (inputs, scrollbars) match the theme */
 :root { color-scheme: light dark; }
 
+/* -- Dark-mode readability fixes (append at end) -- */
+:root { color-scheme: light dark; }
+
+@media (prefers-color-scheme: dark) {
+  /* Use light-on-dark tokens everywhere */
+  :root {
+    --fg: #eaeaea;        /* main text */
+    --muted: #c2c2c2;     /* secondary text (header p, footer) */
+    --border: #333333;    /* dividers */
+    --link: #a8c8ff;      /* links */
+    --link-hover: #cfe1ff;
+  }
+
+  /* Base */
+  body { background: #121212; color: var(--fg); }
+
+  /* Header / footer text that was too dim */
+  header p,
+  footer { color: var(--muted); }
+
+  /* Dividers that were still #eee */
+  header,
+  footer,
+  section + section { border-color: var(--border); }
+
+  /* Headings — ensure strong contrast on dark */
+  h1 { color: #ffffff; }
+  h2 { color: #eeeeee; }
+  h3 { color: #dddddd; }
+
+  /* Lists & small text sometimes inherit muted from UA styles */
+  ul, ol, li, small { color: var(--fg); }
+
+  /* Links */
+  a { color: var(--link); }
+  a:hover,
+  a:focus { color: var(--link-hover); }
+
+  /* Profile image subtle outline for separation on dark bg */
+  .profile-photo {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+  }
+}
+
+
 /* === BASE RESET === */
 *,
 *::before,
