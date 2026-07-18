@@ -17,6 +17,7 @@
     <p>Postdoctoral Researcher, University of Amsterdam</p>
     <nav aria-label="Primary">
       <a href="#about">About</a>
+      <a href="#career">Career</a>
       <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
       <a href="assets/CV2026.pdf" target="_blank">CV</a>
@@ -54,6 +55,123 @@
         I try to live by a simple belief:<br>
         <q>If you work really hard and you're kind, amazing things will happen.</q> — <em>Conan O’Brien</em>.
       </p>
+    </section>
+
+    <section id="career">
+      <div class="career-timeline-scroll" tabindex="0" aria-label="Scrollable career timeline">
+        <div class="career-timeline" role="tablist" aria-label="Career stages, ordered from past to future">
+          <div class="career-stage-wrap" data-start-year="2016" data-end-year="2018">
+            <button
+              class="career-stage career-stage--taiwan"
+              id="career-tab-taiwan"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="career-detail"
+              data-template="career-taiwan"
+            >
+              <span class="career-stage__place">Taiwan</span>
+              <span class="career-stage__years">2016–2018</span>
+              <span class="career-stage__role">ML research &amp; applied AI</span>
+            </button>
+          </div>
+
+          <div class="career-stage-wrap" data-start-year="2018" data-end-year="2021">
+            <button
+              class="career-stage career-stage--switzerland"
+              id="career-tab-switzerland"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="career-detail"
+              data-template="career-switzerland"
+            >
+              <span class="career-stage__place">Switzerland</span>
+              <span class="career-stage__years">2018–2021</span>
+              <span class="career-stage__role">CTO &amp; startup co-founder</span>
+            </button>
+          </div>
+
+          <div class="career-stage-wrap" data-start-year="2021" data-end-year="present">
+            <button
+              class="career-stage career-stage--netherlands is-active"
+              id="career-tab-netherlands"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="career-detail"
+              data-template="career-netherlands"
+            >
+              <span class="career-stage__place">Netherlands</span>
+              <span class="career-stage__years">2021–present</span>
+              <span class="career-stage__role">PhD &amp; postdoctoral research</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="career-detail"
+        id="career-detail"
+        role="tabpanel"
+        aria-live="polite"
+        aria-labelledby="career-tab-netherlands"
+      ></div>
+
+      <template id="career-taiwan">
+        <div class="career-detail__heading">
+          <div>
+            <span class="career-detail__eyebrow">Taipei, Taiwan</span>
+            <h3>Applied Machine Learning in Industry</h3>
+          </div>
+          <span class="career-detail__period">2016–2018</span>
+        </div>
+        <p>
+          As a <strong>Machine Learning Researcher &amp; Engineer at Emotibot Technologies</strong>,
+          I worked on production-facing intelligent systems and embedded deep learning.
+        </p>
+        <ul>
+          <li>Real-time facial recognition systems</li>
+          <li>Multimodal affective computing</li>
+          <li>Deep neural networks for embedded systems</li>
+        </ul>
+      </template>
+
+      <template id="career-switzerland">
+        <div class="career-detail__heading">
+          <div>
+            <span class="career-detail__eyebrow">Lausanne, Switzerland</span>
+            <h3>Building an AI Healthcare Startup</h3>
+          </div>
+          <span class="career-detail__period">2018–2021</span>
+        </div>
+        <p>
+          As <strong>CTO &amp; Co-founder of Deep Cube SA</strong>, I led the development of AI systems
+          for healthcare, including glaucoma screening, skin-disorder analysis, and clinical data collection.
+        </p>
+        <p class="career-detail__note">
+          This period overlapped with my role as Technical Director of AI at Relajet Technologies in Taipei (2018–2020).
+        </p>
+      </template>
+
+      <template id="career-netherlands">
+        <div class="career-detail__heading">
+          <div>
+            <span class="career-detail__eyebrow">Amsterdam, The Netherlands</span>
+            <h3>Research in Intelligent Networked Systems</h3>
+          </div>
+          <span class="career-detail__period">2021–present</span>
+        </div>
+        <p>
+          At the <strong>University of Amsterdam</strong>, I completed a PhD in Informatics and now work
+          as a postdoctoral researcher on agentic AI, context engineering, and decentralized multi-agent systems.
+        </p>
+        <ul>
+          <li>PhD researcher, teaching, and student thesis supervision (2021–2025)</li>
+          <li>Visiting researcher at NEC Laboratories Europe in Heidelberg (2024)</li>
+          <li>Postdoctoral researcher in agentic AI-driven network automation (2025–present)</li>
+        </ul>
+      </template>
     </section>
 
     <section id="publications">
@@ -140,7 +258,59 @@
 
   <footer class="container">
     <p>© <span id="year"></span> Cyril Hsu</p>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      (() => {
+        const tabs = Array.from(document.querySelectorAll('.career-stage'));
+        const panel = document.getElementById('career-detail');
+        const now = new Date();
+        const currentYear = now.getFullYear() + now.getMonth() / 12;
+
+        document.querySelectorAll('.career-stage-wrap').forEach((stage) => {
+          const start = Number(stage.dataset.startYear);
+          const end = stage.dataset.endYear === 'present'
+            ? currentYear
+            : Number(stage.dataset.endYear);
+          stage.style.setProperty('--duration', Math.max(end - start, 1));
+        });
+
+        function activate(tab, moveFocus = false) {
+          tabs.forEach((item) => {
+            const active = item === tab;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-selected', String(active));
+            item.tabIndex = active ? 0 : -1;
+          });
+
+          const template = document.getElementById(tab.dataset.template);
+          panel.replaceChildren(template.content.cloneNode(true));
+          panel.setAttribute('aria-labelledby', tab.id);
+
+          if (moveFocus) tab.focus();
+        }
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener('mouseenter', () => activate(tab));
+          tab.addEventListener('focus', () => activate(tab));
+          tab.addEventListener('click', () => activate(tab));
+          tab.addEventListener('keydown', (event) => {
+            let nextIndex;
+            if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+            if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+            if (event.key === 'Home') nextIndex = 0;
+            if (event.key === 'End') nextIndex = tabs.length - 1;
+
+            if (nextIndex !== undefined) {
+              event.preventDefault();
+              activate(tabs[nextIndex], true);
+            }
+          });
+        });
+
+        activate(document.querySelector('.career-stage.is-active') || tabs[0]);
+      })();
+    </script>
   </footer>
 </body>
 </html>
